@@ -1,23 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { products } from "../../productsMock";
 import ItemCount from "../ItemCount/ItemCount";
+import { CartContext } from "../../Context/CartContext";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
 
+  const { agregarAlCarrito } = useContext(CartContext);
+
   const productSelected = products.find((element) => element.id === Number(id));
 
   const onAdd = (cantidad) => {
-    console.log(`se agrego al carrito ${cantidad} productos`);
+    let producto = {
+      ...productSelected,
+      quantity: cantidad,
+    };
+
+    agregarAlCarrito(producto);
   };
 
-  console.log(productSelected);
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
       <h1>{productSelected.title}</h1>
       <img
-        style={{ height: 250 }}
+        style={{ height: 250, objectFit: "cover" }}
         src={productSelected.img}
         alt={productSelected.description}
       />

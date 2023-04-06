@@ -6,18 +6,10 @@ const NavbarList = () => {
   return (
     <div>
       <ul className={styles.containerList}>
-        <Link to="/">
-          <a href="#">TODAS LAS CATEGORIAS</a>
-        </Link>
-        <Link to="/category/Indumentaria">
-          <a href="#">INDUMENTARIA</a>
-        </Link>
-        <Link to="/category/Componentes">
-          <a href="#">COMPONENTES</a>
-        </Link>
-        <Link to="/category/Protecciones">
-          <a href="#">PROTECCIONES</a>
-        </Link>
+        <Link to="/">TODAS LAS CATEGORIAS</Link>
+        <Link to="/category/Indumentaria">INDUMENTARIA</Link>
+        <Link to="/category/Componentes">COMPONENTES</Link>
+        <Link to="/category/Protecciones">PROTECCIONES</Link>
       </ul>
     </div>
   );
