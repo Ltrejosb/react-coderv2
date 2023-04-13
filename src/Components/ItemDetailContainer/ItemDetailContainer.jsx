@@ -1,15 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { products } from "../../productsMock";
+import { collection, doc, getDoc } from "firebase/firestore";
 import ItemCount from "../ItemCount/ItemCount";
 import { CartContext } from "../../Context/CartContext";
+import Swal from "sweetalert2";
+import "animate.css";
+import { db } from "../../firebaseConfig";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
 
-  const { agregarAlCarrito } = useContext(CartContext);
+  const { agregarAlCarrito, getQuantityById } = useContext(CartContext);
 
-  const productSelected = products.find((element) => element.id === Number(id));
+  const [productSelected, setProductSelected] = useState({});
+
+  useEffect(() => {
+    const itemCollection = collection(db, "products");
+    const ref = doc(itemCollection, id);
+    getDoc(ref).then((res) => {
+      setProductSelected({
+        ...res.data(),
+        id: res.id,
+      });
+    });
+  }, [id]);
 
   const onAdd = (cantidad) => {
     let producto = {
@@ -18,7 +32,23 @@ const ItemDetailContainer = () => {
     };
 
     agregarAlCarrito(producto);
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Producto agregado al carrito",
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOutUp",
+      },
+      showConfirmButton: false,
+      timer: 1500,
+      iconColor: "#1085fb",
+    });
   };
+
+  let quantity = getQuantityById(Number(id));
 
   return (
     <div
@@ -37,7 +67,11 @@ const ItemDetailContainer = () => {
       />
       <h2>$ {productSelected.price}</h2>
       <h3>{productSelected.description}</h3>
-      <ItemCount stock={productSelected.stock} onAdd={onAdd} />
+      <ItemCount
+        stock={productSelected.stock}
+        onAdd={onAdd}
+        initial={quantity}
+      />
     </div>
   );
 };

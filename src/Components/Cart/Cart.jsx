@@ -1,27 +1,74 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
+import { Button } from "@mui/material";
+import styles from "./Cart.module.css";
+import Swal from "sweetalert2";
 
 const Cart = () => {
-  const { cart, clearCart, getTotalPrice } = useContext(CartContext);
+  const { cart, clearCart, getTotalPrice, deleteProductById } =
+    useContext(CartContext);
+
+  const clear = () => {
+    Swal.fire({
+      title: "Estas seguro de vaciar el carrito?",
+      text: "Esta acción no podrá ser revertida!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, Borrar!",
+      cancelButtonText: "Cancelar",
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOutUp",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Listo!", "Tu carrito a sido vaciado.", "success");
+        clearCart();
+      }
+    });
+  };
 
   const precioTotal = getTotalPrice();
 
   return (
-    <div
-      style={{ width: "100%", display: "flex", justifyContent: "space-evenly" }}
-    >
+    <div className={styles.cartDetails}>
       {cart.map((elemento) => {
         return (
-          <div style={{ border: "2px solid black" }} key={elemento.id}>
+          <div className={styles.itemCart} key={elemento.id}>
             <h2>{elemento.title}</h2>
             <img src={elemento.img} alt="" style={{ width: "200px" }} />
             <h3>{elemento.quantity}</h3>
-            <h3>{elemento.price}</h3>
+            <h3>${elemento.price}</h3>
+            <Button
+              variant="contained"
+              onClick={() => deleteProductById(elemento.id)}
+            >
+              Eliminar
+            </Button>
           </div>
         );
       })}
-      <h1>El total del carrito es: {precioTotal}</h1>
-      <button onClick={clearCart}>limpiar carrito</button>
+      <div className={styles.cartTotal}>
+        <div>
+          <h3>Sub Total $</h3>
+          <h3>Descuento $</h3>
+          <h2>El total de tu compra es: ${precioTotal}</h2>
+        </div>
+        {cart.length > 0 && (
+          <div>
+            <Button variant="contained">Comprar</Button>
+
+            <hr />
+            <Button variant="contained" onClick={() => clear()}>
+              limpiar carrito
+            </Button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

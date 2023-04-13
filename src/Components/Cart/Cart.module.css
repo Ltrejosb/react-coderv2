@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,100;1,700&display=swap");
+
+.itemCart {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.cartDetails {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.cartTotal {
+  align-items: space-around;
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.h1 {
+  font-family: "Roboto";
+  font-weight: 100;
+}

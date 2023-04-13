@@ -10,6 +10,7 @@ const ItemList = ({ items }) => {
         justifyContent: "space-evenly",
         alignItems: "center",
         marginTop: 50,
+        width: "50%",
       }}
     >
       {items.map((element) => {

@@ -14,7 +14,8 @@ const Item = ({ element }) => {
     <Card
       className={styles.card}
       sx={{
-        width: 250,
+        marginBottom: "50px",
+        width: "40%",
         transition: "0.2s",
         "&:hover": {
           transform: "scale(1.05)",
@@ -25,7 +26,7 @@ const Item = ({ element }) => {
         className={styles.cardMedia}
         sx={{ height: 200, objectFit: "contain", border: "" }}
         image={element.img}
-        title="green iguana"
+        title={element.title}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
