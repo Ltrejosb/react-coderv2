@@ -1,18 +1,17 @@
-import CartWidget from "../CartWidget/CartWidget";
 import styles from "./Navbar.module.css";
-import Logo from "../Logo/Logo";
-
+import CartWidget from "../CartWidget/CartWidget";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
-import { Link } from "react-router-dom";
+import Logo from "../Logo/Logo";
 
-const Navbar = () => {
+const Navbar = ({ children }) => {
   const [categoryList, setCategoryList] = useState([]);
 
   useEffect(() => {
-    const itemsCollections = collection(db, "categories");
-    getDocs(itemsCollections).then((res) => {
+    const itemsCollection = collection(db, "categories");
+    getDocs(itemsCollection).then((res) => {
       let arrayCategories = res.docs.map((category) => {
         return {
           ...category.data(),
@@ -38,6 +37,7 @@ const Navbar = () => {
         </ul>
       </div>
       <CartWidget />
+      {children}
     </div>
   );
 };

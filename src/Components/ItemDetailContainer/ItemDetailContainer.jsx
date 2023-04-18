@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { collection, doc, getDoc } from "firebase/firestore";
-import ItemCount from "../ItemCount/ItemCount";
+
 import { CartContext } from "../../Context/CartContext";
 import Swal from "sweetalert2";
 import "animate.css";
 import { db } from "../../firebaseConfig";
+import ItemDetail from "../../ItemDetail/ItemDetail";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
@@ -51,26 +52,11 @@ const ItemDetailContainer = () => {
   let quantity = getQuantityById(Number(id));
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-      }}
-    >
-      <h1>{productSelected.title}</h1>
-      <img
-        style={{ height: 250, objectFit: "cover" }}
-        src={productSelected.img}
-        alt={productSelected.description}
-      />
-      <h2>$ {productSelected.price}</h2>
-      <h3>{productSelected.description}</h3>
-      <ItemCount
-        stock={productSelected.stock}
+    <div>
+      <ItemDetail
+        productSelected={productSelected}
         onAdd={onAdd}
-        initial={quantity}
+        quantity={quantity}
       />
     </div>
   );

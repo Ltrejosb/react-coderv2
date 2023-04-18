@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCcD9HtHmzVvkEwu9Fte3re8Ji7aKimwoE",
-  authDomain: "data-fixbike.firebaseapp.com",
-  projectId: "data-fixbike",
-  storageBucket: "data-fixbike.appspot.com",
-  messagingSenderId: "367955108471",
-  appId: "1:367955108471:web:28091da02b62ece7a45c72",
+  apiKey: "AIzaSyCp2c5CI2m4dUaf3upPA9ukL-DDn7HH-KY",
+  authDomain: "fixbike-data.firebaseapp.com",
+  projectId: "fixbike-data",
+  storageBucket: "fixbike-data.appspot.com",
+  messagingSenderId: "788427440765",
+  appId: "1:788427440765:web:73873e8d7e62ba89ff2714",
 };
 
 const app = initializeApp(firebaseConfig);
