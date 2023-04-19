@@ -6,7 +6,7 @@ import { CartContext } from "../../Context/CartContext";
 import Swal from "sweetalert2";
 import "animate.css";
 import { db } from "../../firebaseConfig";
-import ItemDetail from "../../ItemDetail/ItemDetail";
+import ItemDetail from "../ItemDetail/ItemDetail";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();

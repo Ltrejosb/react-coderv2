@@ -1,0 +1,12 @@
+.form {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  margin: 50px;
+}
+
+.textfield {
+  margin-top: 50px;
+}

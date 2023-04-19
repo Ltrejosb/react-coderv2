@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
+import styles from "../FormCheckout/FormCheckou.module.css";
 
 const FormCheckout = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
   const [userData, setUserData] = useState({
@@ -35,27 +36,30 @@ const FormCheckout = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Nombre"
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <TextField
+          className={styles.textfield}
+          id="standard-basic"
+          label="Nombre"
           value={userData.name}
           onChange={(e) => setUserData({ ...userData, name: e.target.value })}
         />
-        <input
-          type="text"
-          placeholder="Email"
+        <TextField
+          className={styles.textfield}
+          id="standard-basic"
+          label="Email"
           value={userData.email}
           onChange={(e) => setUserData({ ...userData, email: e.target.value })}
         />
-        <input
-          type="text"
-          placeholder="Telefono"
+        <TextField
+          className={styles.textfield}
+          id="standard-basic"
+          label="Teléfono"
           value={userData.phone}
           onChange={(e) => setUserData({ ...userData, phone: e.target.value })}
         />
 
-        <Button type="submit" variant="contained">
+        <Button type="submit" variant="contained" className={styles.textfield}>
           Comprar
         </Button>
       </form>
