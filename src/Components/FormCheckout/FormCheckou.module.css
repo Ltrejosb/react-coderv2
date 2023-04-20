@@ -1,12 +1,19 @@
-.form {
+.formContainer {
   display: flex;
-  justify-content: space-around;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  max-width: 100%;
-  margin: 50px;
+  height: 100vh;
+}
+
+.form {
+  width: 50%;
 }
 
 .textfield {
-  margin-top: 50px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.button {
+  width: 100%;
 }

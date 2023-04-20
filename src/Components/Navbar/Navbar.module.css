@@ -17,20 +17,24 @@
   color: black;
 }
 
-a {
-  text-decoration: none;
-}
-span {
-  color: red;
-  font-weight: 500;
+.ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
 }
 
-.texto {
-  text-align: center;
-  color: #ffffff;
-  background: #232323;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18,
-    0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
-  color: #ffffff;
-  background: #232323;
+.ul li {
+  margin-right: 16px;
+}
+
+.ul li a {
+  color: #1085fb; /* Color azul claro */
+  font-family: "Roboto", sans-serif; /* Fuente Roboto */
+  text-decoration: none; /* Quitar subrayado en enlaces */
+  transition: color 0.3s ease-in-out; /* Transición suave para el efecto hover */
+  font-size: x-large;
+}
+
+.ul li a:hover {
+  color: #1565c0; /* Cambiar color en hover */
 }

@@ -27,3 +27,16 @@
   font-family: "Roboto";
   font-weight: 100;
 }
+
+.cartCheckOut {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.cartCheckOut .h2 {
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

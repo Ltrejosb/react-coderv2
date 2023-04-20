@@ -1,10 +1,10 @@
-import styles from "./Navbar.module.css";
-import CartWidget from "../CartWidget/CartWidget";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import Logo from "../Logo/Logo";
+import CartWidget from "../CartWidget/CartWidget";
+import { Link } from "react-router-dom";
+import styles from "./Navbar.module.css";
 
 const Navbar = ({ children }) => {
   const [categoryList, setCategoryList] = useState([]);
@@ -26,12 +26,12 @@ const Navbar = ({ children }) => {
     <div className={styles.containerNavbar}>
       <Logo />
       <div>
-        <ul className={styles.containerList}>
+        <ul className={`${styles.containerList} ${styles.ul}`}>
           {categoryList.map((category) => {
             return (
-              <Link key={category.id} to={category.path}>
-                {category.title}
-              </Link>
+              <li key={category.id}>
+                <Link to={category.path}>{category.title}</Link>
+              </li>
             );
           })}
         </ul>

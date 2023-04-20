@@ -35,7 +35,7 @@ const FormCheckout = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
   };
 
   return (
-    <div>
+    <div className={styles.formContainer}>
       <form onSubmit={handleSubmit} className={styles.form}>
         <TextField
           className={styles.textfield}
@@ -59,7 +59,7 @@ const FormCheckout = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
           onChange={(e) => setUserData({ ...userData, phone: e.target.value })}
         />
 
-        <Button type="submit" variant="contained" className={styles.textfield}>
+        <Button type="submit" variant="contained" className={styles.button}>
           Comprar
         </Button>
       </form>

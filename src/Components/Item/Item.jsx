@@ -10,21 +10,25 @@ import Divider from "@mui/material/Divider";
 import { Link } from "react-router-dom";
 
 const Item = ({ element }) => {
+  const cardStyles = {
+    marginBottom: "50px",
+    width: "40%",
+    transition: "0.2s",
+    "&:hover": {
+      transform: "scale(1.05)",
+    },
+  };
+
+  const cardMediaStyles = {
+    paddingTop: "100%", // Ajustar el paddingTop para mantener la relación de aspecto
+    backgroundSize: "contain", // Ajustar el backgroundSize para que la imagen se vea completa
+  };
+
   return (
-    <Card
-      className={styles.card}
-      sx={{
-        marginBottom: "50px",
-        width: "40%",
-        transition: "0.2s",
-        "&:hover": {
-          transform: "scale(1.05)",
-        },
-      }}
-    >
+    <Card className={styles.card} sx={cardStyles}>
       <CardMedia
         className={styles.cardMedia}
-        sx={{ height: 200, objectFit: "contain", border: "" }}
+        sx={cardMediaStyles}
         image={element.img}
         title={element.title}
       />

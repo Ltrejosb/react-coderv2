@@ -40,7 +40,7 @@ const Cart = () => {
 
   if (orderId) {
     return (
-      <div>
+      <div className={styles.cartCheckOut}>
         <h2>Gracias por su Compra</h2>
         <h4>El comprobante es : {orderId}</h4>
         <Link to="/">Seguir Comprando </Link>
