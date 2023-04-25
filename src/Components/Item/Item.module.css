@@ -7,3 +7,24 @@
 .cardMedia {
   object-fit: cover;
 }
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 100%;
+  }
+  .cardMedia {
+    padding-top: 50%;
+  }
+  .cardContent {
+    text-align: center;
+  }
+  .cardContent h5 {
+    font-size: 1.5rem;
+  }
+  .cardContent p {
+    font-size: 1rem;
+  }
+  .cardContent h4 {
+    font-size: 1.5rem;
+  }
+}

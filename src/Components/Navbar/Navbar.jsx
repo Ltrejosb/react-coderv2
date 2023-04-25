@@ -5,6 +5,7 @@ import Logo from "../Logo/Logo";
 import CartWidget from "../CartWidget/CartWidget";
 import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
+import MuiLink from "@mui/material/Link";
 
 const Navbar = ({ children }) => {
   const [categoryList, setCategoryList] = useState([]);
@@ -30,7 +31,18 @@ const Navbar = ({ children }) => {
           {categoryList.map((category) => {
             return (
               <li key={category.id}>
-                <Link to={category.path}>{category.title}</Link>
+                <MuiLink
+                  component={Link}
+                  to={category.path}
+                  underline="none"
+                  sx={{
+                    fontFamily: "Roboto",
+                    fontStyle: "italic",
+                    fontWeight: 400,
+                  }}
+                >
+                  {category.title}
+                </MuiLink>
               </li>
             );
           })}

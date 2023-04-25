@@ -5,6 +5,7 @@ import styles from "./Cart.module.css";
 import Swal from "sweetalert2";
 import FormCheckout from "../FormCheckout/FormCheckout";
 import { Link } from "react-router-dom";
+import { Typography } from "@mui/material";
 
 const Cart = () => {
   const { cart, clearCart, getTotalPrice, deleteProductById } =
@@ -41,9 +42,24 @@ const Cart = () => {
   if (orderId) {
     return (
       <div className={styles.cartCheckOut}>
-        <h2>Gracias por su Compra</h2>
-        <h4>El comprobante es : {orderId}</h4>
-        <Link to="/">Seguir Comprando </Link>
+        <Typography variant="h2" style={{ color: "#1085fb" }}>
+          Gracias por su Compra
+        </Typography>
+        <Typography variant="h4" style={{ color: "#777" }}>
+          El comprobante es: {orderId}
+        </Typography>
+        <Button
+          component={Link}
+          to="/"
+          variant="contained"
+          style={{
+            backgroundColor: "#1085fb",
+            color: "#fff",
+            marginTop: "1rem",
+          }}
+        >
+          Seguir Comprando
+        </Button>
       </div>
     );
   }
@@ -55,10 +71,16 @@ const Cart = () => {
           {cart.map((elemento) => {
             return (
               <div className={styles.itemCart} key={elemento.id}>
-                <h2>{elemento.title}</h2>
+                <h2 style={{ fontSize: "24px", fontWeight: "bold" }}>
+                  {elemento.title}
+                </h2>
                 <img src={elemento.img} alt="" style={{ width: "200px" }} />
-                <h3>{elemento.quantity}</h3>
-                <h3>${elemento.price}</h3>
+                <h3 style={{ fontSize: "16px", fontWeight: "bold" }}>
+                  {elemento.quantity}
+                </h3>
+                <h3 style={{ fontSize: "16px", fontWeight: "bold" }}>
+                  ${elemento.price}
+                </h3>
                 <Button
                   variant="contained"
                   onClick={() => deleteProductById(elemento.id)}
@@ -70,16 +92,30 @@ const Cart = () => {
           })}
           <div className={styles.cartTotal}>
             <div>
-              <h3>Sub Total $</h3>
-              <h3>Descuento $</h3>
-              <h2>El total de tu compra es: ${getTotalPrice()}</h2>
+              <h3 style={{ fontSize: "16px", fontWeight: "bold" }}>
+                Sub Total $
+              </h3>
+              <h3 style={{ fontSize: "16px", fontWeight: "bold" }}>
+                Descuento $
+              </h3>
+              <h2 style={{ fontSize: "24px", fontWeight: "bold" }}>
+                El total de tu compra es: ${getTotalPrice()}
+              </h2>
             </div>
             {cart.length > 0 && (
               <div>
-                <Button variant="contained" onClick={() => setShowForm(true)}>
+                <Button
+                  variant="contained"
+                  onClick={() => setShowForm(true)}
+                  style={{ margin: "8px" }}
+                >
                   Terminar la compra
                 </Button>
-                <Button onClick={clear} variant="contained">
+                <Button
+                  onClick={clear}
+                  variant="contained"
+                  style={{ margin: "8px" }}
+                >
                   Vaciar carrito
                 </Button>
               </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, TextareaAutosize } from "@mui/material";
 import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import styles from "../FormCheckout/FormCheckou.module.css";
@@ -9,6 +9,7 @@ const FormCheckout = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
     name: "",
     email: "",
     phone: "",
+    comment: "",
   });
 
   const handleSubmit = (e) => {
@@ -57,6 +58,15 @@ const FormCheckout = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
           label="Teléfono"
           value={userData.phone}
           onChange={(e) => setUserData({ ...userData, phone: e.target.value })}
+        />
+        <TextareaAutosize
+          className={styles.textarea} // Añadir una clase de estilo para el textarea
+          rowsMin={3} // Establecer el número mínimo de filas
+          placeholder="Comentario" // Agregar un placeholder
+          value={userData.comment}
+          onChange={(e) =>
+            setUserData({ ...userData, comment: e.target.value })
+          }
         />
 
         <Button type="submit" variant="contained" className={styles.button}>

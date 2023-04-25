@@ -34,8 +34,6 @@ const ItemListContainer = () => {
     });
   }, [categoryId]);
 
-  console.log(items);
-
   return (
     <div
       style={{

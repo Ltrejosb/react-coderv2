@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,100;1,400;1,700&display=swap");
+
 .containerNavbar {
   width: 100%;
   height: 10vh;
@@ -28,13 +30,32 @@
 }
 
 .ul li a {
-  color: #1085fb; /* Color azul claro */
-  font-family: "Roboto", sans-serif; /* Fuente Roboto */
-  text-decoration: none; /* Quitar subrayado en enlaces */
-  transition: color 0.3s ease-in-out; /* Transición suave para el efecto hover */
+  color: #1085fb;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out; /* Transición suave para todos los estilos */
   font-size: x-large;
+  position: relative; /* Añadir posición relativa para alinear la línea debajo del enlace */
 }
 
 .ul li a:hover {
-  color: #1565c0; /* Cambiar color en hover */
+  color: #1565c0;
+}
+
+.ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px; /* Ajustar la posición de la línea debajo del enlace */
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #1085fb;
+  opacity: 0; /* Ocultar la línea inicialmente */
+  transition: all 0.3s ease-in-out; /* Transición suave para la línea */
+}
+
+.ul li a:hover::after {
+  bottom: -6px; /* Ajustar la posición de la línea en hover */
+  opacity: 1; /* Mostrar la línea en hover */
 }

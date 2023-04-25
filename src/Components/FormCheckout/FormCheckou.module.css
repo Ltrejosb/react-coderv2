@@ -17,3 +17,9 @@
 .button {
   width: 100%;
 }
+
+.textarea {
+  margin-top: 30px; /* Agregar un margen superior de 30px */
+  width: 100%; /* Establecer el ancho al 100% */
+  resize: vertical; /* Permitir redimensionar verticalmente */
+}
